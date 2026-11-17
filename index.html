@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sports data analyst portfolio: WTA tennis, WNBA, African football scouting and F1 talent pipeline projects.">
+<title>Thando Velempini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a match programme. Hero as the team sheet, each project as a fixture row: a mono meta column (sport, competition, stack, data) beside the case study. */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #141a17;
+  --muted: #5b6660;
+  --line: #d6ddd8;
+  --accent: #1d6b47;          /* pitch green */
+  --clay: #b5532c;            /* tennis clay */
+  --court: #c98a2b;           /* hardwood */
+  --grass: #2f7d4f;           /* pitch */
+  --track: #8a8f95;           /* tarmac, for F1 */
+  --placeholder: #9aa59f;
+  --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1412; --surface: #161d1a; --ink: #e8eeea; --muted: #9aa7a0; --line: #2a342f;
+    --accent: #5cc493; --clay: #e07b52; --court: #e3a94b; --grass: #5cbf83; --track: #a9afb5;
+    --placeholder: #5e6a64; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1412; --surface: #161d1a; --ink: #e8eeea; --muted: #9aa7a0; --line: #2a342f;
+  --accent: #5cc493; --clay: #e07b52; --court: #e3a94b; --grass: #5cbf83; --track: #a9afb5;
+  --placeholder: #5e6a64; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+a { color: var(--accent); }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Nav */
+nav.top {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px;
+  padding-block: 20px; border-bottom: 1px solid var(--line);
+}
+.mark { font-family: var(--f-display); font-weight: 800; font-size: 22px; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; color: var(--ink); }
+nav.top ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; padding: 0; }
+nav.top a.nl { font-family: var(--f-mono); font-size: 12.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); text-decoration: none; }
+nav.top a.nl:hover { color: var(--ink); }
+
+/* Hero */
+header.hero { padding-block: 64px 48px; display: grid; gap: 32px; }
+.eyebrow { font-family: var(--f-mono); font-size: 12.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+h1 {
+  font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(56px, 11vw, 132px); line-height: .88; letter-spacing: -.005em; margin: 0;
+  text-wrap: balance;
+}
+h1 span { color: var(--accent); }
+.lede { font-size: clamp(18px, 2.2vw, 21px); max-width: 38ch; margin: 0; color: var(--ink); }
+.lede em { font-style: normal; color: var(--muted); }
+
+.sheet {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line);
+}
+.sheet div { padding: 14px 16px 14px 0; display: grid; gap: 2px; }
+.sheet div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+.sheet dt { font-family: var(--f-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.sheet dd { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: 26px; text-transform: uppercase; line-height: 1.1; font-variant-numeric: tabular-nums; }
+@media (max-width: 720px) {
+  .sheet { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sheet div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .sheet div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* Section heads */
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 56px 20px; border-bottom: 2px solid var(--ink); }
+h2 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 5vw, 48px); line-height: 1; margin: 0; }
+
+/* Project rows */
+.project {
+  display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px;
+  padding-block: 40px; border-bottom: 1px solid var(--line);
+  scroll-margin-top: 16px;
+}
+@media (max-width: 760px) { .project { grid-template-columns: 1fr; gap: 20px; } }
+.meta { display: grid; gap: 14px; align-content: start; font-family: var(--f-mono); font-size: 13px; }
+.sport {
+  display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+  font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-weight: 500;
+  padding: 4px 10px; border: 1px solid currentColor; border-radius: 2px;
+}
+.sport::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.tennis .sport { color: var(--clay); }
+.wnba .sport { color: var(--court); }
+.football .sport { color: var(--grass); }
+.f1 .sport { color: var(--track); }
+.meta dl { margin: 0; display: grid; gap: 10px; }
+.meta dt { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.meta dd { margin: 0; color: var(--ink); }
+@media (max-width: 760px) {
+  .meta dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; }
+}
+
+.body { display: grid; gap: 18px; min-width: 0; }
+h3 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(30px, 4.4vw, 44px); line-height: .95; margin: 0; text-wrap: balance; }
+.q { font-size: 19px; line-height: 1.5; max-width: 60ch; margin: 0; }
+.body p { margin: 0; max-width: 65ch; }
+.label { font-family: var(--f-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0 0 6px; }
+.features { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 24px; max-width: 65ch; }
+.features li { padding-left: 18px; position: relative; }
+.features li::before { content: ""; position: absolute; left: 0; top: .72em; width: 8px; height: 2px; background: var(--accent); }
+
+.finding {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px;
+  color: var(--ink); font-size: 16px; max-width: 65ch;
+}
+.finding strong { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 4px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  font-family: var(--f-mono); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em;
+  padding: 11px 16px; border-radius: 3px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent;
+  transition: background .15s, color .15s;
+}
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn .arr { font-family: var(--f-body); }
+
+/* About */
+.about { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding-block: 40px; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 16px; } }
+.about p { margin: 0 0 14px; max-width: 62ch; }
+.stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; padding: 0; list-style: none; }
+.stack li { font-family: var(--f-mono); font-size: 12.5px; padding: 5px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 2px; }
+
+footer { border-top: 2px solid var(--ink); padding-block: 28px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
+footer .contact { display: flex; flex-wrap: wrap; gap: 10px; }
+footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="top" aria-label="Main">
+    <a class="mark" href="#top">T. Velempini</a>
+    <ul>
+      <li><a class="nl" href="#work">Work</a></li>
+      <li><a class="nl" href="#about">About</a></li>
+      <li><a class="nl" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="eyebrow">Sports data analyst · Cape Town</div>
+    <h1>Thando<br><span>Velempini</span></h1>
+    <p class="lede">I turn match and player data into tools that scouts, analysts and fans can actually use. <em>Tennis, basketball, football and Formula 1 so far.</em></p>
+    <dl class="sheet">
+      <div><dt>Projects live</dt><dd>4</dd></div>
+      <div><dt>Sports</dt><dd>Tennis · WNBA · Football · F1</dd></div>
+      <div><dt>Languages</dt><dd>Python · R · SQL</dd></div>
+      <div><dt>Tools</dt><dd>Tableau · Streamlit</dd></div>
+    </dl>
+  </header>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="sec-head">
+      <h2 id="work-h">Selected work</h2>
+      <span class="eyebrow">All built on open data</span>
+    </div>
+
+    <!-- Tennis -->
+    <article class="project tennis" id="tennis">
+      <div class="meta">
+        <span class="sport">Tennis</span>
+        <dl>
+          <div><dt>Competition</dt><dd>WTA Tour</dd></div>
+          <div><dt>Focus</dt><dd>Serve &amp; break points</dd></div>
+          <div><dt>Dashboard</dt><dd>Tableau Public</dd></div>
+          <div><dt>Status</dt><dd>Live</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <h3>The Break Point Problem</h3>
+        <p class="q">How much do breaks of serve and momentum really decide WTA matches, and how predictable does a player's serve become under pressure?</p>
+        <div>
+          <p class="label">Approach</p>
+          <p>A serve-focused analysis of the women's tour. It looks at what happens on break points compared with ordinary points, whether winning one break changes what follows, and how serving patterns shift when a game is on the line. The results are published as an interactive Tableau dashboard.</p>
+        </div>
+        <div class="finding"><strong>Headline finding</strong>The first player to break serve wins 79% of sets, across 10,827 sets. But momentum barely exists point to point: at the same score, winning the previous point doesn’t change a server’s chances of winning the next.</div>
+        <div class="actions">
+          <a class="btn primary" href="https://public.tableau.com/views/break_point_problem/Overview" target="_blank" rel="noopener">Open dashboard <span class="arr">→</span></a>
+          <a class="btn" href="https://github.com/thandovelempini/break-point-problem" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- WNBA -->
+    <article class="project wnba" id="wnba">
+      <div class="meta">
+        <span class="sport">Basketball</span>
+        <dl>
+          <div><dt>Competition</dt><dd>WNBA · NCAA</dd></div>
+          <div><dt>Focus</dt><dd>Rookie projection</dd></div>
+          <div><dt>Built in</dt><dd>R · Tableau Public</dd></div>
+          <div><dt>Status</dt><dd>Live</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <h3>WNBA Rookie Projection</h3>
+        <p class="q">Which college numbers tell you whether a player will succeed in the WNBA?</p>
+        <div>
+          <p class="label">Approach</p>
+          <p>A model that projects how drafted players will perform as WNBA rookies using only their college statistics. I built it in R to work outside my usual Python stack, and published the results to Tableau Public so anyone can explore the projections player by player.</p>
+        </div>
+        <div class="finding"><strong>Headline finding</strong>Draft position predicts who stays in the WNBA better than college stats do. But once players earn real minutes, college stats predict their production more accurately than draft slot does (error of 2.80 vs 3.06 Game Score per 40).</div>
+        <div class="actions">
+          <a class="btn primary" href="https://public.tableau.com/views/WNBARookieProjection/Stars" target="_blank" rel="noopener">Open dashboard <span class="arr">→</span></a>
+          <a class="btn" href="https://github.com/thandovelempini/wnba-rookie-projection" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Football -->
+    <article class="project football" id="scouting">
+      <div class="meta">
+        <span class="sport">Football</span>
+        <dl>
+          <div><dt>Competition</dt><dd>Betway Premiership</dd></div>
+          <div><dt>Data</dt><dd>FBref</dd></div>
+          <div><dt>Built in</dt><dd>Python · Streamlit</dd></div>
+          <div><dt>Status</dt><dd>Live web app</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <h3>African Football Scouting Tool</h3>
+        <p class="q">How can player performance data help clubs find promising recruitment targets in African football?</p>
+        <div>
+          <p class="label">What it does</p>
+          <p>A web app for scouts, recruitment analysts and club technical departments, starting with South Africa's Betway Premiership. Users can:</p>
+        </div>
+        <ul class="features">
+          <li>Search and filter by position, age, club, minutes and performance</li>
+          <li>Compare players in similar roles</li>
+          <li>Find players with similar statistical profiles</li>
+          <li>Build a shortlist, with a reason for each pick</li>
+        </ul>
+        <p>Other African leagues are planned next.</p>
+        <div class="finding"><strong>Headline finding</strong>The market for young ball-winning defensive midfielders is very thin. Across two seasons, only about three strong candidates emerged outside Mamelodi Sundowns and Orlando Pirates, which shows how quickly a targeted search narrows in the Betway Premiership.</div>
+        <div class="actions">
+          <a class="btn primary" href="https://psl-scouting.streamlit.app/" target="_blank" rel="noopener">Launch the app <span class="arr">→</span></a>
+          <a class="btn" href="https://github.com/thandovelempini/african-football-scouting-tool" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- F1 -->
+    <article class="project f1" id="f1">
+      <div class="meta">
+        <span class="sport">Motorsport</span>
+        <dl>
+          <div><dt>Competition</dt><dd>Formula 1 · F2</dd></div>
+          <div><dt>Focus</dt><dd>Driver talent pipeline</dd></div>
+          <div><dt>Built in</dt><dd>Python · SQL · Streamlit</dd></div>
+          <div><dt>Status</dt><dd>Live web app</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <h3>F1 Talent Pipeline</h3>
+        <p class="q">Does success in F2 and the junior single-seater ladder predict success in Formula 1?</p>
+        <div>
+          <p class="label">Approach</p>
+          <p>A Streamlit app that rates drivers on two separate scales: a Driver Performance Rating for what they've achieved given their circumstances, and a Driver Potential Rating for how much they're likely to develop. Two models answer two questions: who reaches F1, and who becomes established once there. It applies the same scouting idea as my football tool to the path into F1. Built in Python with a PostgreSQL database.</p>
+        </div>
+        <div class="finding"><strong>Headline finding</strong>A dominant late F2 season is a weak signal. The best junior seasons in the data mostly belong to third- or fourth-year drivers, such as de Vries (2019) and Drugovich (2022). None of them became established in F1.</div>
+        <div class="actions">
+          <a class="btn primary" href="https://f1-talent-pipeline.streamlit.app/" target="_blank" rel="noopener">Launch the app <span class="arr">→</span></a>
+          <a class="btn" href="https://github.com/thandovelempini/f1-talent-pipeline" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="about" aria-labelledby="about-h">
+    <div class="sec-head"><h2 id="about-h">About</h2></div>
+    <div class="about">
+      <div class="eyebrow">University of Cape Town graduate</div>
+      <div>
+        <p>I'm a sports data analyst who builds things people can use: interactive dashboards, prediction models and scouting tools. I work across sports because each one asks different questions of the data, from a single break point in tennis to a whole season of player profiles in football.</p>
+        <p>What interests me most is scouting: using data to spot talent early. I'm especially interested in African football, where good data tools are still rare and the talent pool is huge.</p>
+        <ul class="stack" aria-label="Tools">
+          <li>Python</li><li>R</li><li>Tableau</li><li>SQL</li><li>Streamlit</li><li>Power BI</li><li>Git &amp; GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="contact">
+      <a class="btn" href="https://www.linkedin.com/in/thandovelempini" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/thandovelempini" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:thandovelempini@gmail.com">Email</a>
+    </div>
+    <small>© 2026 Thando Velempini</small>
+  </footer>
+</div>
+</body>
+</html>
