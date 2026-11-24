@@ -16,11 +16,11 @@
   --ink: #14151a;
   --muted: #5b5e66;
   --line: #d6d9e0;
-  --accent: #3679ed;          /* blue */
-  --clay: #b5532c;            /* tennis clay */
-  --court: #c98a2b;           /* hardwood */
-  --grass: #2f7d4f;           /* pitch */
-  --track: #7b3fc4;           /* purple sector, for F1 */
+  --accent: #3679ed;         
+  --clay: #b5532c;            
+  --court: #c98a2b;           
+  --grass: #2f7d4f;         
+  --track: #7b3fc4;      
   --placeholder: #9a9fa9;
   --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -156,6 +156,8 @@ h3 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase;
 .featured .tag { font-family: var(--f-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
 .featured h3 { font-size: clamp(36px, 5.6vw, 64px); line-height: .9; overflow-wrap: break-word; }
 .featured .intro { align-content: start; }
+.demo { grid-column: 1 / -1; margin: 0; aspect-ratio: 10 / 7; max-width: 100%; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: #0e1713; }
+.demo video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .featured .finding { background: var(--bg); }
 .featured .body p, .featured .features, .featured .finding, .featured .q { max-width: none; }
 .featured .features { grid-template-columns: minmax(0, 1fr); gap: 8px; }
@@ -176,9 +178,27 @@ h3 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase;
 .card .q { font-size: 16px; }
 .card .summary { margin: 0; font-size: 15px; color: var(--muted); }
 .card .finding { background: var(--bg); font-size: 15px; padding: 12px 14px; }
+.card .focus { font-family: var(--f-mono); font-size: 12.5px; color: var(--ink); margin-top: -6px; }
+.card .focus span { white-space: nowrap; }
 .card .stackline { font-family: var(--f-mono); font-size: 12px; color: var(--muted); letter-spacing: .02em; }
 .card .actions { margin-top: auto; }
 .card .btn { padding: 10px 13px; font-size: 12px; }
+
+/* Mini charts inside the card findings */
+.mini { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+.mini .cap { font-size: 12.5px; color: var(--muted); margin: 0; }
+.mrow { display: grid; grid-template-columns: 7.8em minmax(0, 1fr) 3em; align-items: center; gap: 10px; font-size: 13px; }
+.mrow .ml { color: var(--ink); line-height: 1.25; }
+.mrow .mv { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink); }
+.mt { position: relative; height: 12px; }
+.mt::before { content: ""; position: absolute; inset: 5px 0; background: var(--line); border-radius: 1px; }
+.mt i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--card); border-radius: 0 4px 4px 0; }
+.mt i.ref { background: var(--muted); opacity: .55; }
+.mt .mark { position: absolute; top: -3px; bottom: -3px; border-left: 1.5px dashed var(--muted); }
+.mt .dot { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--card); box-shadow: 0 0 0 2px var(--bg); }
+.mt .dot.dim { background: var(--muted); opacity: .6; }
+.mscale { display: grid; grid-template-columns: 7.8em minmax(0, 1fr) 3em; gap: 10px; font-size: 11.5px; color: var(--muted); }
+.mscale span:nth-child(2) { display: flex; justify-content: space-between; }
 
 /* About */
 .about { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding-block: 40px; }
@@ -207,9 +227,9 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
   <header class="hero" id="top">
     <div class="eyebrow">Sports data analyst · Johannesburg</div>
     <h1>Thando<br><span>Velempini</span></h1>
-    <p class="lede">Turning sports data into insights, analysis and tools that make a difference. <em>Across football, tennis, basketball and motorsport</em></p>
+    <p class="lede">Turning sports data into insights, analysis and tools that make a difference. <em>Across football, tennis, basketball and motorsport.</em></p>
     <dl class="sheet">
-      <div><dt>Projects live</dt><dd>4</dd></div>
+      <div><dt>Projects</dt><dd>4</dd></div>
       <div><dt>Sports</dt><dd>Tennis · Basketball · Football · F1</dd></div>
       <div><dt>Languages</dt><dd>Python · R · SQL</dd></div>
       <div><dt>Tools</dt><dd>Tableau · Streamlit</dd></div>
@@ -228,13 +248,16 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
         <span class="sport">Football</span>
         <span class="tag">Featured project</span>
       </div>
+      <figure class="demo">
+        <video id="scouting-demo" src="images/scouting-demo.mp4" poster="images/scouting-demo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the African Football Scouting Tool: the home page, a shortlist of young defensive midfielders, a player profile and a side-by-side player comparison."></video>
+      </figure>
       <div class="body intro">
         <h3>African Football Scouting Tool</h3>
         <p class="q">How can player performance data help clubs identify promising recruitment targets in African football?</p>
         <div class="meta">
           <dl>
             <div><dt>Competition</dt><dd><span>Betway Premiership</span> <span>· South Africa</span></dd></div>
-            <div><dt>Focus</dt><dd><span>Player scouting</span> <span>· Player profiling</span></dd></div>
+            <div><dt>Focus</dt><dd><span>Player scouting</span> <span>· Player profiling</span> <span>· Recruitment analysis</span></dd></div>
             <div><dt>Built with</dt><dd><span>Python</span> <span>· Streamlit</span></dd></div>
             <div><dt>Status</dt><dd>Live web app</dd></div>
           </dl>
@@ -265,9 +288,15 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
       <article class="card f1" id="f1">
         <span class="sport">Motorsport</span>
         <h3>F1 Talent Pipeline</h3>
-        <p class="q">Does success in F2 and the junior single-seater ladder predict success in Formula 1?</p>
-        <p class="summary">A driver scouting app with separate Performance and Potential ratings, and two models: which junior drivers reach F1, and which establish themselves there.</p>
-        <div class="finding"><strong>Headline finding</strong>A dominant F2 season is not necessarily a strong signal of future F1 success. Some of the strongest junior seasons in the dataset belonged to drivers in their third or fourth F2/GP2 campaigns, including Nyck de Vries (2019) and Felipe Drugovich (2022). Neither went on to establish themselves as full-time F1 drivers.</div>
+        <span class="focus"><span>Driver development</span> <span>· Talent identification</span></span>
+        <p class="q">Does success in F2 predict success in Formula 1?</p>
+        <div class="finding"><strong>Headline finding</strong>A dominant F2 season is a weak signal. Some of the best junior seasons, including de Vries (2019) and Drugovich (2022), came in a driver's third or fourth year. Neither became an established F1 driver.
+        <div class="mini" role="img" aria-label="Predictive power of F2 results for reaching F1: AUC 0.72 after one season, 0.60 after three seasons. A coin flip is 0.50.">
+          <p class="cap">How well F2 results alone predict reaching F1 (AUC). Dashed line: a coin flip, 0.5</p>
+          <div class="mrow"><span class="ml">After 1 season</span><span class="mt"><i style="width:72%"></i><span class="mark" style="left:50%"></span></span><span class="mv">0.72</span></div>
+          <div class="mrow"><span class="ml">After 3 seasons</span><span class="mt"><i style="width:60%"></i><span class="mark" style="left:50%"></span></span><span class="mv">0.60</span></div>
+          <div class="mscale"><span></span><span><span>0</span><span>1.0</span></span><span></span></div>
+        </div></div>
         <span class="stackline">Python · SQL · PostgreSQL · Streamlit</span>
         <div class="actions">
           <a class="btn primary" href="https://f1-talent-pipeline.streamlit.app/" target="_blank" rel="noopener">Launch app <span class="arr">→</span></a>
@@ -279,9 +308,14 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
       <article class="card tennis" id="tennis">
         <span class="sport">Tennis</span>
         <h3>The Break Point Problem</h3>
-        <p class="q">How much do breaks of serve and momentum really decide WTA matches, and how predictable does a player's serve become under pressure?</p>
-        <p class="summary">A serve-focused analysis of women's Grand Slam tennis, using point-level match data and shot-charted serves.</p>
-        <div class="finding"><strong>Headline finding</strong>The first player to break serve wins <b>79% of sets</b>, across 10,827 sets. But momentum barely exists point to point. At the same score, winning the previous point does not meaningfully change a server's chances of winning the next.</div>
+        <span class="focus"><span>Serve performance</span> <span>· Break-point pressure</span></span>
+        <p class="q">How much do breaks of serve and momentum decide WTA matches?</p>
+        <div class="finding"><strong>Headline finding</strong>The first player to break serve wins <b>79% of sets</b> (10,827 sets). But point-to-point momentum barely exists: winning the last point doesn't change the server's chances on the next.
+        <div class="mini" role="img" aria-label="Share of sets won by the first player to break serve: 79 percent, against 50 percent for even odds.">
+          <p class="cap">Sets won by the first player to break</p>
+          <div class="mrow"><span class="ml">First to break</span><span class="mt"><i style="width:79%"></i></span><span class="mv">79%</span></div>
+          <div class="mrow"><span class="ml">Even odds</span><span class="mt"><i class="ref" style="width:50%"></i></span><span class="mv">50%</span></div>
+        </div></div>
         <span class="stackline">Python · Tableau Public</span>
         <div class="actions">
           <a class="btn primary" href="https://public.tableau.com/views/break_point_problem/Overview" target="_blank" rel="noopener">Dashboard <span class="arr">→</span></a>
@@ -293,9 +327,16 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
       <article class="card wnba" id="wnba">
         <span class="sport">Basketball</span>
         <h3>WNBA Rookie Projection</h3>
-        <p class="q">Can college statistics predict which WNBA draftees will stick in the league and how well they will perform as professionals?</p>
-        <p class="summary">Models built in R that test whether college box-score stats forecast retention into a second or third season, and professional production.</p>
-        <div class="finding"><strong>Headline finding</strong>Draft position is a stronger predictor of WNBA retention than college statistics. However, among players who earn meaningful playing time, college statistics predict production more accurately than draft position alone, achieving a lower prediction error (2.80 vs 3.06 Game Score per 40).</div>
+        <span class="focus"><span>Rookie projection</span> <span>· Player retention</span></span>
+        <p class="q">Can college stats predict which WNBA draftees stick and succeed?</p>
+        <div class="finding"><strong>Headline finding</strong>Draft position best predicts who stays in the league. But for players who earn real minutes, college stats predict production better (RMSE 2.80 vs 3.06 for draft position, Game Score per 40).
+        <div class="mini" role="img" aria-label="Prediction error for production, RMSE in Game Score per 40, lower is better: college statistics 2.80, combined model 2.92, draft position 3.06.">
+          <p class="cap">Production prediction error (RMSE), lower is better</p>
+          <div class="mrow"><span class="ml">College stats</span><span class="mt"><span class="dot" style="left:25%"></span></span><span class="mv">2.80</span></div>
+          <div class="mrow"><span class="ml">Combined</span><span class="mt"><span class="dot dim" style="left:55%"></span></span><span class="mv">2.92</span></div>
+          <div class="mrow"><span class="ml">Draft position</span><span class="mt"><span class="dot dim" style="left:90%"></span></span><span class="mv">3.06</span></div>
+          <div class="mscale"><span></span><span><span>2.7</span><span>3.1</span></span><span></span></div>
+        </div></div>
         <span class="stackline">R · Tableau Public</span>
         <div class="actions">
           <a class="btn primary" href="https://public.tableau.com/views/WNBARookieProjection/Overview" target="_blank" rel="noopener">Dashboard <span class="arr">→</span></a>
@@ -313,9 +354,7 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
         <p>I am a sports data analyst interested in turning sports data into tools, insights and better decisions. I build interactive dashboards, predictive
           models and scouting applications, working across different sports and the questions they raise – from understanding a single break point in tennis 
           to profiling players across an entire football league.</p>
-        <p>I am particularly interested in talent identification and scouting: using data to uncover promising players, evaluate performance and identify 
-          opportunities that might otherwise go unnoticed.
-        </p>
+        <p>I'm particularly interested in talent identification and scouting: using data to uncover promising players, evaluate performance and identify opportunities that might otherwise go unnoticed. This interest extends across African sports, where I see considerable potential for data-driven analysis and better analytical tools.</p>
         <ul class="stack" aria-label="Tools">
           <li>Python</li><li>R</li><li>SQL</li><li>Tableau</li><li>Power BI</li><li>Streamlit</li><li>Git &amp; GitHub</li>
         </ul>
@@ -332,5 +371,13 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
     <small>© 2026 Thando Velempini</small>
   </footer>
 </div>
+<script>
+{
+  const v = document.getElementById('scouting-demo');
+  if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.removeAttribute('autoplay'); v.pause(); v.controls = true;
+  }
+}
+</script>
 </body>
 </html>
