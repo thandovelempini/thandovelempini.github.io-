@@ -249,7 +249,7 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
         <span class="tag">Featured project</span>
       </div>
       <figure class="demo">
-        <video id="scouting-demo" src="images/scouting-demo.mp4" poster="images/scouting-demo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the African Football Scouting Tool: the home page, a shortlist of young defensive midfielders, a player profile and a side-by-side player comparison."></video>
+        <video id="scouting-demo" src="images/scouting_demo.mp4" poster="images/scouting_demo_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the African Football Scouting Tool: the home page, a shortlist of young defensive midfielders, a player profile and a side-by-side player comparison."></video>
       </figure>
       <div class="body intro">
         <h3>African Football Scouting Tool</h3>
@@ -373,7 +373,8 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
 </div>
 <script>
 {
-  const v = document.getElementById('scouting-demo');
+  const v = document.getElementById('scouting_demo');
+  if (v) v.playbackRate = 1.4;
   if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     v.removeAttribute('autoplay'); v.pause(); v.controls = true;
   }
