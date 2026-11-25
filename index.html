@@ -58,10 +58,10 @@ nav.top {
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px;
   padding-block: 20px; border-bottom: 1px solid var(--line);
 }
-.mark { font-family: var(--f-display); font-weight: 800; font-size: 22px; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; color: var(--ink); }
+.mark { font-family: var(--f-display); font-weight: 800; font-size: 22px; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; color: var(--accent); }
 nav.top ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; padding: 0; }
 nav.top a.nl { font-family: var(--f-mono); font-size: 12.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); text-decoration: none; }
-nav.top a.nl:hover { color: var(--ink); }
+nav.top a.nl:hover { color: var(--accent); }
 
 /* Hero */
 header.hero { padding-block: 64px 48px; display: grid; gap: 32px; }
@@ -90,7 +90,7 @@ h1 span { color: var(--accent); }
 }
 
 /* Section heads */
-.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 56px 20px; border-bottom: 2px solid var(--ink); }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 56px 20px; border-bottom: 0; }
 h2 { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(32px, 5vw, 48px); line-height: 1; margin: 0; }
 
 /* Project rows */
@@ -217,13 +217,13 @@ dialog.lightbox button { font: inherit; font-family: var(--f-mono); font-size: 1
 .mscale span:nth-child(2) { display: flex; justify-content: space-between; }
 
 /* About */
-.about { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; padding-block: 40px; }
+.about { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 8px 16px; }
 @media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 16px; } }
-.about p { margin: 0 0 14px; max-width: 80ch; }
-.stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; padding: 0; list-style: none; }
+.about p { margin: 0 0 14px; max-width: 90ch; }
+.stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; padding: 0; list-style: none; }
 .stack li { font-family: var(--f-mono); font-size: 12.5px; padding: 5px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 2px; }
 
-footer { border-top: 2px solid var(--ink); padding-block: 28px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
+footer { border-top: 0; padding-block: 28px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
 footer .contact { display: flex; flex-wrap: wrap; gap: 10px; }
 footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
 </style>
@@ -254,7 +254,7 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
 
   <section id="work" aria-labelledby="work-h">
     <div class="sec-head">
-      <h2 id="work-h">Selected work</h2>
+      <h2 id="work-h" style="color: var(--accent);">Selected work</h2>
       <span class="eyebrow">All built on open data</span>
     </div>
 
@@ -282,12 +282,12 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
       <div class="body detail">
         <div>
           <p class="label">What it does</p>
-          <p>A player scouting and profiling tool developed for scouts, recruitment analysts and club technical departments, with an intial focus on South Africa's Betway Premiership. The tool enables users to:</p>
+          <p>A player scouting and profiling tool developed for scouts, recruitment analysts and club technical departments, with an initial focus on South Africa's Betway Premiership. The tool enables users to:</p>
         </div>
         <ul class="features">
           <li><strong>Search and filter players</strong> based on position, age, club, minutes played and performance metrics.</li>
           <li><strong>Compare players</strong> who perform comparable positional and tactical roles.</li>
-          <li><strong>Identify statistical lookalikes</strong> by searching for players with similar comparable performance profiles.</li>
+          <li><strong>Identify statistical lookalikes</strong> by searching for players with comparable performance profiles.</li>
           <li><strong>Create recruitment shortlists</strong> that include statistical reasoning for each selection.</li>
         </ul>
         <p>Expansion into further African leagues is planned.</p>
@@ -307,7 +307,7 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
         <h3>F1 Talent Pipeline</h3>
         <span class="focus"><span>Driver development</span> <span>・ Talent identification</span></span>
         <p class="q">Does success in Formula 2 predict success in Formula 1?</p>
-        <div class="finding"><strong>Headline finding</strong>A dominant F2 season is a weak indicator. Some of the best junior seasons, such as de Vries (2019) and Drugovich (2022), occured during a driver's third or fourth year. Neither became an established F1 driver.
+        <div class="finding"><strong>Headline finding</strong>A dominant F2 season is a weak indicator. Some of the best junior seasons, such as de Vries (2019) and Drugovich (2022), occurred during a driver's third or fourth year. Neither became an established F1 driver.
         <div class="mini" role="img" aria-label="Predictive power of F2 results for reaching F1: AUC 0.72 after one season, 0.60 after three seasons. A coin flip is 0.50.">
           <p class="cap">How accurately F2 results predict reaching F1 (AUC). Dashed line: A coin flip, 0.5</p>
           <div class="mrow"><span class="ml">After rookie season</span><span class="mt"><i style="width:72%"></i><span class="mark" style="left:50%"></span></span><span class="mv">0.72</span></div>
@@ -367,11 +367,10 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
   </section>
 
   <section id="about" aria-labelledby="about-h">
-    <div class="sec-head"><h2 id="about-h">About</h2></div>
+    <div class="sec-head"><h2 id="about-h" style="color: var(--accent);">About</h2></div>
     <div class="about">
-      <div class="eyebrow">University of Cape Town graduate</div>
       <div>
-        <p>As a sports data anlayst, my goal is to use sports data to create tools, insights and more informed decisions. I design interactive dashboards, prediction models and scouting tools. I work with a variety of sports and and the challenges they pose, from analysing a single tennis break point to creating player profiles for a whole football league.</p>
+        <p>As a sports data analyst, my goal is to use sports data to create tools, insights and more informed decisions. I design interactive dashboards, prediction models and scouting tools. I work with a variety of sports and the challenges they pose, from analysing a single tennis break point to creating player profiles for a whole football league.</p>
         <p>Talent identification and scouting, which utilises data to discover promising players, assess performance and identify possibilities that could otherwise go unreported, particularly interests me. This interest extends to African sports, where I believe there is a lot of room for improved analytical tools and data-driven analysis. </p>
         <ul class="stack" aria-label="Tools">
           <li>Python</li><li>R</li><li>SQL</li><li>Tableau</li><li>Power BI</li><li>Streamlit</li><li>Git &amp; GitHub</li>
@@ -417,5 +416,3 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
 </script>
 </body>
 </html>
-
-
