@@ -199,6 +199,8 @@ dialog.lightbox .lb-bar { position: sticky; bottom: 0; background: var(--surface
 dialog.lightbox .lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px; font-size: 13px; color: var(--muted); }
 dialog.lightbox button { font: inherit; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding: 8px 12px; border: 1.5px solid var(--ink); border-radius: 3px; background: transparent; color: var(--ink); cursor: pointer; }
 .card .btn { padding: 10px 13px; font-size: 12px; }
+.card .btn.preview { border-color: var(--line); color: var(--muted); cursor: zoom-in; }
+.card .btn.preview:hover { border-color: var(--accent); color: var(--bg); }
 
 /* Mini charts inside the card findings */
 .mini { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
@@ -302,7 +304,6 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
     <div class="grid">
       <!-- F1 -->
       <article class="card f1" id="f1">
-        <a class="thumb framed" href="images/f1-full.jpg" data-caption="F1 Talent Pipeline: the Junior Performance page of the app"><img src="images/f1-thumb.jpg" alt="Screenshot of the F1 Talent Pipeline app's Junior Performance page, with the highest-rated junior seasons and charts comparing drivers who reached F1 with those who did not" loading="lazy" width="960" height="540"></a>
         <span class="sport">Motorsport</span>
         <h3>F1 Talent Pipeline</h3>
         <span class="focus"><span>Driver development</span> <span>・ Talent identification</span></span>
@@ -319,12 +320,12 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
         <div class="actions">
           <a class="btn primary" href="https://f1-talent-pipeline.streamlit.app/" target="_blank" rel="noopener">Launch app <span class="arr">→</span></a>
           <a class="btn" href="https://github.com/thandovelempini/f1-talent-pipeline" target="_blank" rel="noopener">Code</a>
+          <a class="btn preview" href="images/f1-full.jpg" data-caption="F1 Talent Pipeline: the Junior Performance page of the app" data-alt="Screenshot of the F1 Talent Pipeline app's Junior Performance page, with the highest-rated junior seasons and charts comparing drivers who reached F1 with those who did not">Preview</a>
         </div>
       </article>
 
       <!-- Tennis -->
       <article class="card tennis" id="tennis">
-        <a class="thumb framed" href="images/tennis-full.jpg" data-caption="The Break Point Problem: the Overview page of the Tableau dashboard"><img src="images/tennis-thumb.jpg" alt="Screenshot of The Break Point Problem dashboard's Overview page: 66.3% of service games held, 78.7% of sets won by the first player to break, a 0.0 percentage-point previous-point effect, and hold rates by surface" loading="lazy" width="960" height="540"></a>
         <span class="sport">Tennis</span>
         <h3>The Break Point Problem</h3>
         <span class="focus"><span>Serve performance</span> <span>・ Break-point pressure</span></span>
@@ -339,12 +340,12 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
         <div class="actions">
           <a class="btn primary" href="https://public.tableau.com/views/break_point_problem/Overview" target="_blank" rel="noopener">Dashboard <span class="arr">→</span></a>
           <a class="btn" href="https://github.com/thandovelempini/break-point-problem" target="_blank" rel="noopener">Code</a>
+          <a class="btn preview" href="images/tennis-full.jpg" data-caption="The Break Point Problem: the Overview page of the Tableau dashboard" data-alt="Screenshot of The Break Point Problem dashboard's Overview page: 66.3% of service games held, 78.7% of sets won by the first player to break, a 0.0 percentage-point previous-point effect, and hold rates by surface">Preview</a>
         </div>
       </article>
 
       <!-- WNBA -->
       <article class="card wnba" id="wnba">
-        <a class="thumb framed" href="images/wnba-full.jpg" data-caption="WNBA Rookie Projection: the Overview page of the Tableau dashboard"><img src="images/wnba-thumb.jpg" alt="Screenshot of the WNBA Rookie Projection dashboard's Overview page: retention AUC of 0.861 for draft slot, production RMSE of 2.80 for college stats, 51% of draftees retained, 21 All-Stars, and a model comparison chart" loading="lazy" width="960" height="540"></a>
         <span class="sport">Basketball</span>
         <h3>WNBA Rookie Projection</h3>
         <span class="focus"><span>Rookie projection</span> <span>・ Player retention</span></span>
@@ -361,6 +362,7 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
         <div class="actions">
           <a class="btn primary" href="https://public.tableau.com/views/WNBARookieProjection/Overview" target="_blank" rel="noopener">Dashboard <span class="arr">→</span></a>
           <a class="btn" href="https://github.com/thandovelempini/wnba-rookie-projection" target="_blank" rel="noopener">Code</a>
+          <a class="btn preview" href="images/wnba-full.jpg" data-caption="WNBA Rookie Projection: the Overview page of the Tableau dashboard" data-alt="Screenshot of the WNBA Rookie Projection dashboard's Overview page: retention AUC of 0.861 for draft slot, production RMSE of 2.80 for college stats, 51% of draftees retained, 21 All-Stars, and a model comparison chart">Preview</a>
         </div>
       </article>
     </div>
@@ -395,11 +397,11 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
 <script>
 {
   const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
-  document.querySelectorAll('.thumb').forEach(a => a.addEventListener('click', e => {
+  document.querySelectorAll('.preview').forEach(a => a.addEventListener('click', e => {
     if (!lb.showModal) return;
     e.preventDefault();
     lbImg.src = a.getAttribute('href');
-    lbImg.alt = a.querySelector('img').alt;
+    lbImg.alt = a.dataset.alt || '';
     lbCap.textContent = a.dataset.caption || '';
     lb.showModal();
   }));
