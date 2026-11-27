@@ -22,21 +22,22 @@
   --grass: #4f7a0f;           
   --track: #3a5af6;           
   --placeholder: #9a9fa9;
+  --ink-soft: #4A5F86;
   --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1218; --surface: #161a22; --ink: #e8eaef; --muted: #9ba1ad; --line: #2a2f3a;
+    --bg: #0f1218; --surface: #161a22; --ink: #d5d8df; --muted: #9ba1ad; --line: #2a2f3a;
     --accent: #3679ed; --clay: #a97cf0; --court: #d27783; --grass: #c6ef6a; --track: #7d94ff;
-    --placeholder: #5e6472; color-scheme: dark;
+    --placeholder: #5e6472; --ink-soft: #8FA6CC; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0f1218; --surface: #161a22; --ink: #e8eaef; --muted: #9ba1ad; --line: #2a2f3a;
+  --bg: #0f1218; --surface: #161a22; --ink: #d5d8df; --muted: #9ba1ad; --line: #2a2f3a;
   --accent: #3679ed; --clay: #a97cf0; --court: #d27783; --grass: #c6ef6a; --track: #7d94ff;
-  --placeholder: #5e6472; color-scheme: dark;
+  --placeholder: #5e6472; --ink-soft: #8FA6CC; color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -73,6 +74,7 @@ h1 {
   text-wrap: balance;
 }
 h1 span { color: var(--accent); }
+
 .lede { font-size: clamp(16px, 2vw, 19px); max-width: none; margin: 0; color: var(--ink); }
 .lede em { display: block; margin-top: 6px; font-style: normal; color: var(--muted); font-size: 0.85em; }
 
@@ -270,7 +272,7 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
 
   <section id="work" aria-labelledby="work-h">
     <div class="sec-head">
-      <h2 id="work-h" style="color: var(--accent);">Selected work</h2>
+      <h2 id="work-h" style="color: var(--ink-soft);">Selected work</h2>
       <span class="eyebrow">All built on open data</span>
     </div>
 
@@ -384,7 +386,7 @@ footer small { font-family: var(--f-mono); font-size: 12px; color: var(--muted);
   </section>
 
   <section id="about" aria-labelledby="about-h">
-    <div class="sec-head"><h2 id="about-h" style="color: var(--accent);">About</h2></div>
+    <div class="sec-head"><h2 id="about-h" style="color: var(--ink-soft);">About</h2></div>
     <div class="about">
       <div>
         <p>As a sports data analyst, my goal is to use sports data to create tools, insights and more informed decisions. I design interactive dashboards, prediction models and scouting tools. I work with a variety of sports and the challenges they pose, from analysing a single tennis break point to creating player profiles for a whole football league.</p>
